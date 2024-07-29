@@ -1,0 +1,16 @@
+
+ import "./user.zmodel"  
+
+model CustomerSupport {
+
+    id        String    @id @default(uuid())  
+    message   String?      
+    response  String?      
+    status    String?      
+    userId    String?      
+    user      User?      @relation(fields: [userId], references: [id], name:"user")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

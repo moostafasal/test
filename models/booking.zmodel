@@ -1,0 +1,22 @@
+
+ import "./user.zmodel"  
+ import "./car.zmodel"  
+ import "./payment.zmodel"  
+
+model Booking {
+
+    id        String    @id @default(uuid())  
+    startDate String?      
+    endDate   String?      
+    status    String?      
+    totalPrice Float?       
+    userId    String?      
+    user      User?      @relation(fields: [userId], references: [id], name:"user")  
+    carId     String?      
+    car       Car?       @relation(fields: [carId], references: [id], name:"car")  
+
+payments  Payment[] @relation("booking")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

@@ -1,0 +1,19 @@
+
+ import "./booking.zmodel"  
+
+model Car {
+
+    id        String    @id @default(uuid())  
+    type      String?      
+    brand     String?      
+    model     String?      
+    pricePerDay Float?       
+    availabilityStatus String?      
+    description String?      
+    imageUrl  String?      
+
+bookings  Booking[] @relation("car")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
